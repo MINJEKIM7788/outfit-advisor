@@ -1,0 +1,202 @@
+{
+  "weather_outfits": {
+    "hot": {
+      "label": "Hot & Sunny",
+      "temp_range": "28°C+",
+      "outfits": [
+        {
+          "name": "Summer Chic",
+          "items": [
+            {"piece": "Linen Mini Dress", "brand": "Zara", "price": "$59", "link": "https://www.zara.com"},
+            {"piece": "Strappy Sandals", "brand": "Steve Madden", "price": "$89", "link": "https://www.stevemadden.com"},
+            {"piece": "Woven Straw Bag", "brand": "H&M", "price": "$35", "link": "https://www.hm.com"},
+            {"piece": "Gold Hoop Earrings", "brand": "Mejuri", "price": "$58", "link": "https://www.mejuri.com"},
+            {"piece": "Sunnies", "brand": "Quay", "price": "$65", "link": "https://www.quayaustralia.com"}
+          ],
+          "vibe": "Coastal Chic",
+          "color_palette": ["#F5DEB3", "#FFD700", "#FFFFFF"]
+        },
+        {
+          "name": "Dopamine Dressing",
+          "items": [
+            {"piece": "Bright Slip Dress", "brand": "ASOS", "price": "$45", "link": "https://www.asos.com"},
+            {"piece": "Flatform Sandals", "brand": "Topshop", "price": "$75", "link": "https://www.topshop.com"},
+            {"piece": "Mini Crossbody Bag", "brand": "Coach", "price": "$150", "link": "https://www.coach.com"},
+            {"piece": "Layered Necklaces", "brand": "Gorjana", "price": "$80", "link": "https://www.gorjana.com"}
+          ],
+          "vibe": "Dopamine Dressing",
+          "color_palette": ["#FF6B9D", "#FFD93D", "#6BCB77"]
+        }
+      ]
+    },
+    "warm": {
+      "label": "Warm & Pleasant",
+      "temp_range": "22–28°C",
+      "outfits": [
+        {
+          "name": "Quiet Luxury",
+          "items": [
+            {"piece": "Silk Blouse", "brand": "Everlane", "price": "$98", "link": "https://www.everlane.com"},
+            {"piece": "Wide Leg Trousers", "brand": "Banana Republic", "price": "$120", "link": "https://www.bananarepublic.com"},
+            {"piece": "Pointed Toe Flats", "brand": "Sam Edelman", "price": "$110", "link": "https://www.samedelman.com"},
+            {"piece": "Structured Tote", "brand": "Polène", "price": "$220", "link": "https://www.polene-paris.com"},
+            {"piece": "Gold Watch", "brand": "Daniel Wellington", "price": "$179", "link": "https://www.danielwellington.com"}
+          ],
+          "vibe": "Quiet Luxury",
+          "color_palette": ["#F5F5DC", "#C4A882", "#8B7355"]
+        },
+        {
+          "name": "Old Money Aesthetic",
+          "items": [
+            {"piece": "Knit Polo", "brand": "Ralph Lauren", "price": "$98", "link": "https://www.ralphlauren.com"},
+            {"piece": "Pleated Midi Skirt", "brand": "& Other Stories", "price": "$89", "link": "https://www.stories.com"},
+            {"piece": "Loafers", "brand": "Gucci (dupe: Zara)", "price": "$79", "link": "https://www.zara.com"},
+            {"piece": "Leather Belt Bag", "brand": "Madewell", "price": "$88", "link": "https://www.madewell.com"}
+          ],
+          "vibe": "Old Money",
+          "color_palette": ["#F0EAD6", "#3B5323", "#8B4513"]
+        }
+      ]
+    },
+    "mild": {
+      "label": "Mild & Breezy",
+      "temp_range": "15–22°C",
+      "outfits": [
+        {
+          "name": "Coastal Grandmother",
+          "items": [
+            {"piece": "Linen Button-Down", "brand": "Gap", "price": "$55", "link": "https://www.gap.com"},
+            {"piece": "High-Rise Straight Jeans", "brand": "Levi's", "price": "$98", "link": "https://www.levi.com"},
+            {"piece": "White Sneakers", "brand": "New Balance 574", "price": "$90", "link": "https://www.newbalance.com"},
+            {"piece": "Woven Tote", "brand": "Mark & Graham", "price": "$79", "link": "https://www.markandgraham.com"},
+            {"piece": "Pearl Earrings", "brand": "Anthropologie", "price": "$38", "link": "https://www.anthropologie.com"}
+          ],
+          "vibe": "Coastal Grandmother",
+          "color_palette": ["#F0F8FF", "#B0C4DE", "#FAEBD7"]
+        },
+        {
+          "name": "Y2K Revival",
+          "items": [
+            {"piece": "Crop Cardigan", "brand": "Urban Outfitters", "price": "$59", "link": "https://www.urbanoutfitters.com"},
+            {"piece": "Low-Rise Flare Jeans", "brand": "Abercrombie", "price": "$88", "link": "https://www.abercrombie.com"},
+            {"piece": "Platform Sneakers", "brand": "Buffalo London", "price": "$130", "link": "https://www.buffalo-boots.com"},
+            {"piece": "Mini Shoulder Bag", "brand": "ASOS", "price": "$35", "link": "https://www.asos.com"},
+            {"piece": "Butterfly Clips", "brand": "Kitsch", "price": "$15", "link": "https://www.mykitsch.com"}
+          ],
+          "vibe": "Y2K Revival",
+          "color_palette": ["#FFB6C1", "#E6E6FA", "#98FF98"]
+        }
+      ]
+    },
+    "cool": {
+      "label": "Cool & Crisp",
+      "temp_range": "8–15°C",
+      "outfits": [
+        {
+          "name": "Elevated Athleisure",
+          "items": [
+            {"piece": "Ribbed Leggings", "brand": "Lululemon", "price": "$98", "link": "https://www.lululemon.com"},
+            {"piece": "Oversized Blazer", "brand": "Zara", "price": "$89", "link": "https://www.zara.com"},
+            {"piece": "Fitted Tank", "brand": "Skims", "price": "$42", "link": "https://www.skims.com"},
+            {"piece": "Chunky Sneakers", "brand": "New Balance 9060", "price": "$130", "link": "https://www.newbalance.com"},
+            {"piece": "Baseball Cap", "brand": "Sporty & Rich", "price": "$55", "link": "https://www.sportyandrich.com"}
+          ],
+          "vibe": "Elevated Athleisure",
+          "color_palette": ["#2C2C2C", "#FFFFFF", "#808080"]
+        },
+        {
+          "name": "Cottagecore",
+          "items": [
+            {"piece": "Floral Midi Dress", "brand": "Free People", "price": "$128", "link": "https://www.freepeople.com"},
+            {"piece": "Chunky Knit Cardigan", "brand": "Anthropologie", "price": "$148", "link": "https://www.anthropologie.com"},
+            {"piece": "Ankle Boots", "brand": "Dr. Martens", "price": "$160", "link": "https://www.drmartens.com"},
+            {"piece": "Wicker Basket Bag", "brand": "Cult Gaia", "price": "$198", "link": "https://www.cultgaia.com"},
+            {"piece": "Scrunchie Headband", "brand": "Lack of Color", "price": "$35", "link": "https://www.lackofcolor.com"}
+          ],
+          "vibe": "Cottagecore",
+          "color_palette": ["#8FBC8F", "#DEB887", "#F5F5DC"]
+        }
+      ]
+    },
+    "cold": {
+      "label": "Cold & Cozy",
+      "temp_range": "Below 8°C",
+      "outfits": [
+        {
+          "name": "Quiet Luxury Winter",
+          "items": [
+            {"piece": "Camel Wool Coat", "brand": "COS", "price": "$350", "link": "https://www.cos.com"},
+            {"piece": "Cashmere Turtleneck", "brand": "Everlane", "price": "$130", "link": "https://www.everlane.com"},
+            {"piece": "Straight Leg Trousers", "brand": "Arket", "price": "$120", "link": "https://www.arket.com"},
+            {"piece": "Knee-High Boots", "brand": "Stuart Weitzman", "price": "$495", "link": "https://www.stuartweitzman.com"},
+            {"piece": "Leather Gloves", "brand": "Nordstrom", "price": "$65", "link": "https://www.nordstrom.com"}
+          ],
+          "vibe": "Quiet Luxury",
+          "color_palette": ["#C4A882", "#2C2C2C", "#F5F5DC"]
+        },
+        {
+          "name": "Street Style Winter",
+          "items": [
+            {"piece": "Puffer Jacket", "brand": "The North Face", "price": "$280", "link": "https://www.thenorthface.com"},
+            {"piece": "Oversized Hoodie", "brand": "Champion", "price": "$65", "link": "https://www.champion.com"},
+            {"piece": "Cargo Pants", "brand": "Dickies", "price": "$45", "link": "https://www.dickies.com"},
+            {"piece": "Chunky Boots", "brand": "Timberland", "price": "$198", "link": "https://www.timberland.com"},
+            {"piece": "Beanie", "brand": "Carhartt", "price": "$28", "link": "https://www.carhartt.com"}
+          ],
+          "vibe": "Street Style",
+          "color_palette": ["#2C2C2C", "#556B2F", "#8B4513"]
+        }
+      ]
+    }
+  },
+  "trends_2026": [
+    {
+      "name": "Quiet Luxury",
+      "description": "Understated elegance — neutral tones, quality fabrics, minimal branding. Think old money without showing it.",
+      "key_pieces": ["Cashmere sweaters", "Tailored trousers", "Loafers", "Structured bags"],
+      "brands": ["The Row", "Toteme", "Everlane", "COS", "Arket"],
+      "forecast": "Peak trend — staying strong all of 2026",
+      "heat": 95
+    },
+    {
+      "name": "Dopamine Dressing",
+      "description": "Bold, bright, maximalist. Wear colour that makes you happy. Clashing prints welcome.",
+      "key_pieces": ["Neon dresses", "Mixed prints", "Colourful bags", "Statement jewellery"],
+      "brands": ["Jacquemus", "Staud", "FARM Rio", "Ganni", "Rouje"],
+      "forecast": "Rising fast — biggest summer 2026 trend",
+      "heat": 88
+    },
+    {
+      "name": "Y2K Revival",
+      "description": "Low-rise, rhinestones, velour, butterfly clips — everything 2000s is back and bigger.",
+      "key_pieces": ["Low-rise jeans", "Crop tops", "Platform shoes", "Mini bags"],
+      "brands": ["Urban Outfitters", "Revolve", "PrettyLittleThing", "Nasty Gal"],
+      "forecast": "Peaking now — best to ride it this season",
+      "heat": 80
+    },
+    {
+      "name": "Elevated Athleisure",
+      "description": "Gym meets boardroom. Sleek, functional, stylish. Blazer over leggings is the new power suit.",
+      "key_pieces": ["Ribbed sets", "Oversized blazers", "Chunky sneakers", "Sport luxe bags"],
+      "brands": ["Lululemon", "Alo Yoga", "Vuori", "Sporty & Rich", "Set Active"],
+      "forecast": "Steady — evergreen trend gaining momentum",
+      "heat": 85
+    },
+    {
+      "name": "Coastal Grandmother",
+      "description": "Linen, white, nautical tones. Easy, breezy, effortlessly chic. Diane Keaton energy.",
+      "key_pieces": ["Linen trousers", "Striped tops", "Woven bags", "Espadrilles"],
+      "brands": ["Eileen Fisher", "J.Crew", "Banana Republic", "Gap"],
+      "forecast": "Spring/Summer 2026 staple — great for warm weather",
+      "heat": 78
+    },
+    {
+      "name": "Dark Feminine",
+      "description": "Lace, corsets, dark florals, velvet. Romantic meets moody. The opposite of quiet luxury.",
+      "key_pieces": ["Lace tops", "Velvet midi skirts", "Corset belts", "Mary Janes"],
+      "brands": ["Free People", "Reformation", "For Love & Lemons", "Zimmermann"],
+      "forecast": "Emerging — will be huge by fall 2026",
+      "heat": 72
+    }
+  ]
+}

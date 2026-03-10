@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Outfit Advisor">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="apple-touch-icon" href="/static/icon.png">
+<title>Outfit Advisor ✦</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --black: #0a0a0a;
+    --white: #fafafa;
+    --pink: #e8b4b8;
+    --blush: #f7e7e9;
+    --gold: #c9a96e;
+    --gray: #6b6b6b;
+    --light: #f2f0ed;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  header {
+    padding: 40px 60px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #222;
+  }
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    letter-spacing: 4px;
+    color: var(--white);
+  }
+  .logo span { color: var(--pink); }
+  .tagline {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--gray);
+    text-transform: uppercase;
+  }
+
+  /* ── SEARCH BAR ── */
+  .search-section {
+    padding: 50px 60px 30px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .search-section input {
+    flex: 1;
+    max-width: 380px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 50px;
+    padding: 14px 24px;
+    color: var(--white);
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .search-section input:focus { border-color: var(--pink); }
+  .search-section input::placeholder { color: #555; }
+  .btn {
+    background: var(--pink);
+    color: var(--black);
+    border: none;
+    border-radius: 50px;
+    padding: 14px 32px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+  }
+  .btn:hover { background: var(--gold); transform: translateY(-1px); }
+
+  /* ── WEATHER CARD ── */
+  #weather-card {
+    margin: 0 60px 40px;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    border: 1px solid #2a2a4a;
+    border-radius: 20px;
+    padding: 30px 40px;
+    display: none;
+    align-items: center;
+    gap: 40px;
+  }
+  .weather-icon { font-size: 64px; }
+  .weather-info h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 400;
+    color: var(--white);
+  }
+  .weather-info p {
+    font-size: 14px;
+    color: #aaa;
+    margin-top: 4px;
+    letter-spacing: 1px;
+  }
+  .weather-meta {
+    margin-left: auto;
+    display: flex;
+    gap: 30px;
+  }
+  .weather-stat { text-align: center; }
+  .weather-stat .val { font-size: 22px; font-weight: 600; color: var(--pink); }
+  .weather-stat .lbl { font-size: 11px; color: #666; letter-spacing: 1px; text-transform: uppercase; margin-top: 4px; }
+
+  /* ── SECTION TITLES ── */
+  .section-header {
+    padding: 0 60px;
+    margin-bottom: 30px;
+  }
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--white);
+  }
+  .section-header p {
+    font-size: 13px;
+    color: var(--gray);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .divider {
+    width: 40px;
+    height: 2px;
+    background: var(--pink);
+    margin-top: 12px;
+  }
+
+  /* ── OUTFIT CARDS ── */
+  .outfits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    gap: 24px;
+    padding: 0 60px;
+    margin-bottom: 60px;
+  }
+  .outfit-card {
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .outfit-card:hover { transform: translateY(-4px); border-color: var(--pink); }
+  .outfit-card-header {
+    padding: 24px 28px 20px;
+    background: linear-gradient(135deg, #1a1a1a, #222);
+    border-bottom: 1px solid #2a2a2a;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .outfit-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+  }
+  .vibe-tag {
+    background: var(--pink);
+    color: var(--black);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 50px;
+  }
+  .color-palette {
+    display: flex;
+    gap: 6px;
+    margin-top: 12px;
+  }
+  .color-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1px solid #333;
+  }
+  .outfit-items { padding: 20px 28px; }
+  .outfit-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #1a1a1a;
+  }
+  .outfit-item:last-child { border-bottom: none; }
+  .item-left { flex: 1; }
+  .item-piece { font-size: 14px; font-weight: 500; color: var(--white); }
+  .item-brand { font-size: 12px; color: var(--gray); margin-top: 2px; }
+  .item-right { display: flex; align-items: center; gap: 12px; }
+  .item-price { font-size: 13px; color: var(--gold); font-weight: 500; }
+  .item-link {
+    font-size: 11px;
+    color: var(--pink);
+    text-decoration: none;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: 1px solid var(--pink);
+    padding: 4px 10px;
+    border-radius: 50px;
+    transition: all 0.2s;
+  }
+  .item-link:hover { background: var(--pink); color: var(--black); }
+
+  /* ── TRENDS ── */
+  .trends-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+    padding: 0 60px;
+    margin-bottom: 80px;
+  }
+  .trend-card {
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 16px;
+    padding: 24px;
+    transition: all 0.2s;
+  }
+  .trend-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+  .trend-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+  .trend-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 400;
+  }
+  .heat-badge {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 50px;
+    letter-spacing: 1px;
+  }
+  .heat-high { background: #ff4444; color: white; }
+  .heat-med  { background: var(--gold); color: var(--black); }
+  .heat-low  { background: #333; color: #aaa; }
+  .trend-desc { font-size: 13px; color: #aaa; line-height: 1.6; margin-bottom: 16px; }
+  .trend-forecast {
+    font-size: 12px;
+    color: var(--pink);
+    font-style: italic;
+    margin-bottom: 14px;
+  }
+  .heat-bar-bg { background: #222; border-radius: 50px; height: 4px; margin-bottom: 16px; }
+  .heat-bar { height: 4px; border-radius: 50px; background: linear-gradient(90deg, var(--pink), var(--gold)); transition: width 1s; }
+  .key-pieces { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .key-piece {
+    font-size: 11px;
+    background: #1a1a1a;
+    color: #ccc;
+    border: 1px solid #333;
+    padding: 4px 10px;
+    border-radius: 50px;
+  }
+  .trend-brands { font-size: 11px; color: #555; letter-spacing: 1px; }
+  .trend-brands span { color: var(--gray); }
+
+  /* ── LOADING ── */
+  .loading {
+    display: none;
+    text-align: center;
+    padding: 60px;
+    color: var(--gray);
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
+  .loading-spinner {
+    width: 30px;
+    height: 30px;
+    border: 2px solid #333;
+    border-top-color: var(--pink);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 20px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ── HERO ── */
+  .hero {
+    text-align: center;
+    padding: 80px 60px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 56px;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+  .hero h1 em { color: var(--pink); font-style: italic; }
+  .hero p {
+    font-size: 16px;
+    color: var(--gray);
+    max-width: 480px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+  }
+
+  /* ── RESULTS ── */
+  #results { display: none; }
+
+  @media (max-width: 768px) {
+    header, .search-section, .section-header, .outfits-grid, .trends-grid { padding: 20px; }
+    #weather-card { margin: 0 20px 30px; flex-direction: column; }
+    .hero h1 { font-size: 36px; }
+    .outfits-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="logo">M<span>♀</span> STYLE</div>
+    <div class="tagline">AI Outfit Advisor for Her</div>
+  </div>
+  <div style="font-size:12px; color:#444; letter-spacing:2px;">2026 COLLECTION</div>
+</header>
+
+<!-- Hero -->
+<div class="hero" id="hero">
+  <h1>Dress for the<br><em>weather & the moment</em></h1>
+  <p>Enter your city to get personalized outfit suggestions based on today's weather, current trends, and where to shop.</p>
+</div>
+
+<!-- Search -->
+<div class="search-section">
+  <input type="text" id="city-input" placeholder="Enter your city (e.g. Toronto, New York, Seoul...)" />
+  <button class="btn" onclick="getOutfits()">Get My Look ✦</button>
+</div>
+
+<!-- Loading -->
+<div class="loading" id="loading">
+  <div class="loading-spinner"></div>
+  STYLING YOUR LOOK...
+</div>
+
+<!-- Results -->
+<div id="results">
+
+  <!-- Weather -->
+  <div id="weather-card">
+    <div class="weather-icon" id="weather-icon">🌤</div>
+    <div class="weather-info">
+      <h2 id="weather-temp">—</h2>
+      <p id="weather-desc">—</p>
+      <p id="weather-city" style="margin-top:6px; color:#666; font-size:12px; letter-spacing:2px;"></p>
+    </div>
+    <div class="weather-meta">
+      <div class="weather-stat">
+        <div class="val" id="weather-feels">—</div>
+        <div class="lbl">Feels Like</div>
+      </div>
+      <div class="weather-stat">
+        <div class="val" id="weather-humidity">—</div>
+        <div class="lbl">Humidity</div>
+      </div>
+      <div class="weather-stat">
+        <div class="val" id="weather-category">—</div>
+        <div class="lbl">Dressing For</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Today's Outfits -->
+  <div class="section-header">
+    <p>Based on your weather</p>
+    <h2>Today's Outfit Picks</h2>
+    <div class="divider"></div>
+  </div>
+  <div class="outfits-grid" id="outfits-grid"></div>
+
+  <!-- Trend Forecast -->
+  <div class="section-header">
+    <p>What's hot right now & next</p>
+    <h2>2026 Trend Forecast</h2>
+    <div class="divider"></div>
+  </div>
+  <div class="trends-grid" id="trends-grid"></div>
+
+</div>
+
+<script>
+function weatherIcon(desc, temp) {
+  const d = desc.toLowerCase();
+  if (d.includes('sun') || d.includes('clear')) return temp > 25 ? '☀️' : '🌤';
+  if (d.includes('rain') || d.includes('shower')) return '🌧';
+  if (d.includes('snow')) return '❄️';
+  if (d.includes('cloud')) return '☁️';
+  if (d.includes('storm') || d.includes('thunder')) return '⛈';
+  if (d.includes('fog') || d.includes('mist')) return '🌫';
+  return '🌤';
+}
+
+function heatClass(heat) {
+  if (heat >= 85) return 'heat-high';
+  if (heat >= 70) return 'heat-med';
+  return 'heat-low';
+}
+
+function heatLabel(heat) {
+  if (heat >= 85) return '🔥 ON FIRE';
+  if (heat >= 70) return '⬆ RISING';
+  return '◎ EMERGING';
+}
+
+async function getOutfits() {
+  const city = document.getElementById('city-input').value || 'Toronto';
+  document.getElementById('hero').style.display = 'none';
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('loading').style.display = 'block';
+
+  try {
+    const res  = await fetch(`/api/outfits?city=${encodeURIComponent(city)}`);
+    const data = await res.json();
+
+    // Weather card
+    const w = data.weather;
+    document.getElementById('weather-temp').textContent = `${w.temp}°C`;
+    document.getElementById('weather-desc').textContent = w.desc;
+    document.getElementById('weather-city').textContent = w.city.toUpperCase();
+    document.getElementById('weather-feels').textContent = `${w.feels}°C`;
+    document.getElementById('weather-humidity').textContent = `${w.humidity}%`;
+    document.getElementById('weather-category').textContent = data.outfits.label;
+    document.getElementById('weather-icon').textContent = weatherIcon(w.desc, w.temp);
+    document.getElementById('weather-card').style.display = 'flex';
+
+    // Outfit cards
+    const grid = document.getElementById('outfits-grid');
+    grid.innerHTML = '';
+    data.outfits.outfits.forEach(outfit => {
+      const palette = outfit.color_palette.map(c =>
+        `<div class="color-dot" style="background:${c}"></div>`).join('');
+      const items = outfit.items.map(item => `
+        <div class="outfit-item">
+          <div class="item-left">
+            <div class="item-piece">${item.piece}</div>
+            <div class="item-brand">${item.brand}</div>
+          </div>
+          <div class="item-right">
+            <div class="item-price">${item.price}</div>
+            <a href="${item.link}" target="_blank" class="item-link">Shop</a>
+          </div>
+        </div>`).join('');
+      grid.innerHTML += `
+        <div class="outfit-card">
+          <div class="outfit-card-header">
+            <div>
+              <div class="outfit-name">${outfit.name}</div>
+              <div class="color-palette">${palette}</div>
+            </div>
+            <div class="vibe-tag">${outfit.vibe}</div>
+          </div>
+          <div class="outfit-items">${items}</div>
+        </div>`;
+    });
+
+    // Trend cards
+    const tgrid = document.getElementById('trends-grid');
+    tgrid.innerHTML = '';
+    data.trends.forEach(trend => {
+      const pieces = trend.key_pieces.map(p => `<div class="key-piece">${p}</div>`).join('');
+      tgrid.innerHTML += `
+        <div class="trend-card">
+          <div class="trend-header">
+            <div class="trend-name">${trend.name}</div>
+            <div class="heat-badge ${heatClass(trend.heat)}">${heatLabel(trend.heat)}</div>
+          </div>
+          <div class="trend-desc">${trend.description}</div>
+          <div class="trend-forecast">✦ ${trend.forecast}</div>
+          <div class="heat-bar-bg"><div class="heat-bar" style="width:${trend.heat}%"></div></div>
+          <div class="key-pieces">${pieces}</div>
+          <div class="trend-brands">Shop at: <span>${trend.brands.join(' · ')}</span></div>
+        </div>`;
+    });
+
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('results').style.display = 'block';
+
+  } catch(e) {
+    document.getElementById('loading').style.display = 'none';
+    alert('Could not load data. Make sure the server is running.');
+  }
+}
+
+// Enter key support
+document.getElementById('city-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') getOutfits();
+});
+</script>
+</body>
+</html>
